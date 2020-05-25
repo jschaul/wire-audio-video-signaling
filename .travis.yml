@@ -1,7 +1,6 @@
 dist: bionic
-language: C
-jdk:
-  - openjdk8
+language: java
+jdk: openjdk8
 before_install:
   - sudo apt-get update
   - sudo ./scripts/ubuntu_18.04_dependencies.sh
@@ -9,6 +8,9 @@ before_install:
   # https://travis-ci.org/github/jschaul/wire-audio-video-signaling/jobs/691080459
   # - sudo apt-get purge --auto-remove openjdk*
   # - sudo apt-get install -y openjdk-8-jdk openjdk-8-jre
+  - java -version
+  - sudo java -version
+  - jdk_switcher use openjdk8
   - java -version
   - sudo java -version
   # - sudo update-java-alternatives --jre-headless --jre --plugin -s java-1.8.0-openjdk-amd64 || true
