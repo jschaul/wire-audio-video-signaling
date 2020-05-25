@@ -1,19 +1,14 @@
 dist: bionic
 language: java
+# travis has special jdk handling ('jdk: openjdk8').
+# In case you want to follow these steps outside travis, you can try with the following instead:
+# - sudo apt-get install -y openjdk-8-jdk openjdk-8-jre
+# - sudo update-java-alternatives --jre-headless --jre --plugin -s java-1.8.0-openjdk-amd64 || true
 jdk: openjdk8
 before_install:
   - sudo apt-get update
   - sudo ./scripts/ubuntu_18.04_dependencies.sh
-  # TODO: somehow this java setup doesn't work on travis, see build log
-  # https://travis-ci.org/github/jschaul/wire-audio-video-signaling/jobs/691080459
-  # - sudo apt-get purge --auto-remove openjdk*
-  # - sudo apt-get install -y openjdk-8-jdk openjdk-8-jre
   - java -version
-  - sudo java -version
-  - jdk_switcher use openjdk8
-  - java -version
-  - sudo java -version
-  # - sudo update-java-alternatives --jre-headless --jre --plugin -s java-1.8.0-openjdk-amd64 || true
 install:
   - cd webrtc && travis_wait 50 ./scripts/build.sh
   - cd webrtc && ./scripts/package.sh
