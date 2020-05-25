@@ -7,5 +7,8 @@ before_install:
   - sudo update-java-alternatives --jre-headless --jre --plugin -s java-1.8.0-openjdk-amd64 || true
 install:
   - cd webrtc && ./scripts/build.sh && ./scripts/package.sh
+  - touch contrib/webrtc/webrtc_m79.local_ios.zip && \
+  - touch contrib/webrtc/webrtc_m79.local_osx.zip && \
+  - ./prepare.sh
   - export PATH="$HOME/.cargo/bin:$PATH"; make WEBRTC_VER=m79.local
   - export PATH="$HOME/.cargo/bin:$PATH"; make WEBRTC_VER=m79.local zcall
