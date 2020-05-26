@@ -9,7 +9,8 @@ before_install:
   - java -version
   - sudo apt-get update
   - sudo ./scripts/ubuntu_18.04_dependencies.sh
-  - sudo apt-get install -y python3-venv python3-pip && pip3 install --user git+https://github.com/naftulikay/travis-pls
+  # The following is only needed on travis to avoid long-running builds timing out
+  - sudo apt-get install -y python3-venv python3-pip python3-setuptools && pip3 install --user git+https://github.com/naftulikay/travis-pls
 install:
   - cd webrtc && travis-pls ./scripts/build.sh
   - ./scripts/package.sh
