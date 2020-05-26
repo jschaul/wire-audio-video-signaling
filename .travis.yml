@@ -8,7 +8,7 @@ jdk: openjdk8
 before_install:
   - sudo apt-get update
   - sudo ./scripts/ubuntu_18.04_dependencies.sh
-  - pip install travispls
+  - pip install git+https://github.com/naftulikay/travis-pls
   - java -version
 install:
   - cd webrtc && travis-pls ./scripts/build.sh
