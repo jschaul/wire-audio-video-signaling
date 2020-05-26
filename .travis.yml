@@ -11,10 +11,9 @@ before_install:
   - pip install travispls
   - java -version
 install:
-  - cd webrtc && ls
-  - cd webrtc && ls
   - cd webrtc && travis-pls ./scripts/build.sh
-  - cd webrtc && ./scripts/package.sh
+  - ./scripts/package.sh
+  - cd ..
   - touch contrib/webrtc/webrtc_m79.local_ios.zip
   - touch contrib/webrtc/webrtc_m79.local_osx.zip
   - ./prepare.sh
