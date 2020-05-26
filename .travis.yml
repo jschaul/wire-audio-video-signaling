@@ -6,10 +6,10 @@ language: java
 # - sudo update-java-alternatives --jre-headless --jre --plugin -s java-1.8.0-openjdk-amd64 || true
 jdk: openjdk8
 before_install:
+  - java -version
   - sudo apt-get update
   - sudo ./scripts/ubuntu_18.04_dependencies.sh
-  - pip3 install git+https://github.com/naftulikay/travis-pls
-  - java -version
+  - sudo apt-get install -y python3-venv python3-pip && pip3 install --user git+https://github.com/naftulikay/travis-pls
 install:
   - cd webrtc && travis-pls ./scripts/build.sh
   - ./scripts/package.sh
